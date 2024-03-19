@@ -63,7 +63,7 @@ const [result, setResult] = useState<string>("")
     <>
     <form
       onSubmit={parkinsonFormik.handleSubmit}
-      className="flex-1 flex flex-col gap-4 items-center w-full mb-8"
+      className="flex-1 flex flex-col gap-4 items-center w-full px-12 sm:px-24"
      
       encType="multipart/form-data"
     >
