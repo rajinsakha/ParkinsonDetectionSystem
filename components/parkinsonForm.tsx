@@ -1,8 +1,5 @@
 "use client";
 
-"use client";
-
-import React, { useRef } from "react";
 
 import { parkinsonFormSchema } from "@/lib/formSchema";
 import { useFormik } from "formik";
@@ -11,8 +8,16 @@ import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { ParkinsonInput } from "@/lib/interface";
 import { submitParkinsonInput } from "@/lib/api";
+import ResultModal from "./resultModal";
+import { useState } from "react";
 
 const ParkinsonForm = () => {
+
+const [status, setStatus] = useState<boolean>(false)
+
+const [result, setResult] = useState<string>("")
+
+
   const initialValues = {
     "MDVP_Fo_Hz" :  null ,
     "MDVP_Flo_Hz" :  null,
@@ -25,7 +30,6 @@ const ParkinsonForm = () => {
     "PPE" :  null
   };
 
-  const inputFileRef = useRef<HTMLInputElement>(null);
 
   const resetForm = () => {
     parkinsonFormik.setValues(initialValues);
@@ -38,15 +42,16 @@ const ParkinsonForm = () => {
     onSubmit: async (values) => {
 
   
-     
       // Handle form submission logic here
       console.log("Form Submitted!");
       try {
         console.log("Form submitted with values:", values);
         const res = await submitParkinsonInput(values);
-        if (res.status === 201) {
+        if (res.status === 200) {
           resetForm();
           console.log(res.data);
+          setResult(res.data);
+          setStatus(true);
         }
       } catch (e) {
         console.log(e);
@@ -55,13 +60,14 @@ const ParkinsonForm = () => {
   });
 
   return (
+    <>
     <form
       onSubmit={parkinsonFormik.handleSubmit}
-      className="flex-1 flex flex-col gap-4 items-center w-full"
+      className="flex-1 flex flex-col gap-4 items-center w-full mb-8"
      
       encType="multipart/form-data"
     >
-      <section className="grid grid-cols-2 gap-8 max-w-2xl w-full">
+      <section className="grid grid-cols-1 min-[450px]:grid-cols-2 gap-8 md:max-w-3xl w-full">
       <div className="flex flex-col gap-2">
         <Label htmlFor="MDVP_Fo_Hz" className="text-black dark:text-white">
           MDVP:Fo(Hz)
@@ -233,6 +239,10 @@ const ParkinsonForm = () => {
         Submit
       </Button>
     </form>
+
+
+    <ResultModal status={status} setStatus={setStatus} result={result}/>
+    </>
   );
 };
 
