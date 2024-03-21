@@ -1,4 +1,6 @@
 import React from "react";
+import { IoMdClose } from "react-icons/io";
+import { Button } from "./ui/button";
 
 interface ResultModalProps {
   status: boolean;
@@ -15,24 +17,25 @@ const ResultModal: React.FC<ResultModalProps> = ({ status, setStatus, result }) 
       style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
     >
       <div
-        className="relative bg-[#fefefe] py-5 px-8 w-[50%]"
+        className="relative bg-[#fefefe] py-8 px-10 w-full md:w-[50%]"
         style={{
           boxShadow:
             "0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)",
         }}
       >
         <div className="flex justify-between items-center">
-          <h1 className="text-xl font-semibold">Result</h1>
+          <h1 className="text-2xl font-semibold">Result</h1>
           <span
             className="text-lg px-4 py-2 rounded-lg cursor-pointer hover:bg-red-100"
             onClick={() => setStatus(false)}
           >
-            X
+            <IoMdClose />
           </span>
         </div>
 
-        <div className="my-4">
-          <h4 className="">{result}</h4>
+        <div className="mt-8 flex flex-col gap-6">
+          <h4 className="text-lg font-medium">{result}</h4>
+          <Button className="w-fit" onClick={()=>setStatus(false)}>Done</Button>
         </div>
       </div>
     </div>

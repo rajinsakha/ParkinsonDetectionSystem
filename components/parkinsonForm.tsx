@@ -10,12 +10,15 @@ import { ParkinsonInput } from "@/lib/interface";
 import { submitParkinsonInput } from "@/lib/api";
 import ResultModal from "./resultModal";
 import { useState } from "react";
+import { useToast } from "./ui/use-toast";
 
 const ParkinsonForm = () => {
 
 const [status, setStatus] = useState<boolean>(false)
 
 const [result, setResult] = useState<string>("")
+
+const {toast} = useToast();
 
 
   const initialValues = {
@@ -40,12 +43,15 @@ const [result, setResult] = useState<string>("")
     initialValues: initialValues,
     validationSchema: parkinsonFormSchema,
     onSubmit: async (values) => {
-
-  
       // Handle form submission logic here
-      console.log("Form Submitted!");
+   
       try {
-        console.log("Form submitted with values:", values);
+        toast({
+          title: "Form has been submitted.",
+          className:'bg-green-600 text-white font-medium text-xl',
+          duration:2000
+        })
+     ;
         const res = await submitParkinsonInput(values);
         if (res.status === 200) {
           resetForm();
@@ -75,7 +81,7 @@ const [result, setResult] = useState<string>("")
         <Input
           name="MDVP_Fo_Hz"
           type="number"
-          placeholder="Enter MDVP:Fo(Hz)"
+          placeholder="Enter MDVP:Fo(Hz) in number"
           onChange={parkinsonFormik.handleChange}
           value={parkinsonFormik.values.MDVP_Fo_Hz === null ? '' : parkinsonFormik.values.MDVP_Fo_Hz}
          
@@ -94,7 +100,7 @@ const [result, setResult] = useState<string>("")
         <Input
           name="MDVP_Flo_Hz"
           type="number"
-          placeholder="Enter MDVP:Flo(Hz)"
+          placeholder="Enter MDVP:Flo(Hz) in number"
           onChange={parkinsonFormik.handleChange}
           value={parkinsonFormik.values.MDVP_Flo_Hz === null ? '' : parkinsonFormik.values.MDVP_Flo_Hz}
         />
@@ -112,7 +118,7 @@ const [result, setResult] = useState<string>("")
         <Input
           name="MDVP_Shimmer"
           type="number"
-          placeholder="Enter MDVP:Shimmer"
+          placeholder="Enter MDVP:Shimmer in number"
           onChange={parkinsonFormik.handleChange}
           value={parkinsonFormik.values.MDVP_Shimmer === null ? '' : parkinsonFormik.values.MDVP_Shimmer}
         />
@@ -131,7 +137,7 @@ const [result, setResult] = useState<string>("")
         <Input
           name="Shimmer_APQ5"
           type="number"
-          placeholder="Enter Shimmer:APQ5"
+          placeholder="Enter Shimmer:APQ5 in number"
           onChange={parkinsonFormik.handleChange}
           value={parkinsonFormik.values.Shimmer_APQ5 === null ? '' : parkinsonFormik.values.Shimmer_APQ5}
         />
@@ -150,7 +156,7 @@ const [result, setResult] = useState<string>("")
         <Input
           name="MDVP_APQ"
           type="number"
-          placeholder="Enter MDVP:APQ"
+          placeholder="Enter MDVP:APQ in number"
           onChange={parkinsonFormik.handleChange}
           value={parkinsonFormik.values.MDVP_APQ === null ? '' : parkinsonFormik.values.MDVP_APQ}
         />
@@ -168,7 +174,7 @@ const [result, setResult] = useState<string>("")
         <Input
           name="HNR"
           type="number"
-          placeholder="Enter HNR"
+          placeholder="Enter HNR in number"
           onChange={parkinsonFormik.handleChange}
           value={parkinsonFormik.values.HNR === null ? '' : parkinsonFormik.values.HNR}
         />
@@ -186,7 +192,7 @@ const [result, setResult] = useState<string>("")
         <Input
           name="spread1"
           type="number"
-          placeholder="Enter Spread1"
+          placeholder="Enter Spread1 in number"
           onChange={parkinsonFormik.handleChange}
           value={parkinsonFormik.values.spread1 === null ? '' : parkinsonFormik.values.spread1}
         />
@@ -204,7 +210,7 @@ const [result, setResult] = useState<string>("")
         <Input
           name="spread2"
           type="number"
-          placeholder="Enter Spread2"
+          placeholder="Enter Spread2 in number"
           onChange={parkinsonFormik.handleChange}
           value={parkinsonFormik.values.spread2 === null ? '' : parkinsonFormik.values.spread2}
         />
@@ -222,7 +228,7 @@ const [result, setResult] = useState<string>("")
         <Input
           name="PPE"
           type="number"
-          placeholder="Enter PPE"
+          placeholder="Enter PPE in number"
           onChange={parkinsonFormik.handleChange}
           value={parkinsonFormik.values.PPE === null ? '' : parkinsonFormik.values.PPE}
         />
