@@ -18,6 +18,8 @@ const [status, setStatus] = useState<boolean>(false)
 
 const [result, setResult] = useState<string>("")
 
+const [reqStatus, setReqStatus] = useState('idle');
+
 const {toast} = useToast();
 
 
@@ -43,17 +45,18 @@ const {toast} = useToast();
     initialValues: initialValues,
     validationSchema: parkinsonFormSchema,
     onSubmit: async (values) => {
+      setReqStatus('pending');
       // Handle form submission logic here
-   
       try {
         toast({
           title: "Form has been submitted.",
           className:'bg-green-600 text-white font-medium text-xl',
           duration:2000
-        })
-     ;
+        });
         const res = await submitParkinsonInput(values);
+      
         if (res.status === 200) {
+          setReqStatus('success');
           resetForm();
           console.log(res.data);
           setResult(res.data);
@@ -67,6 +70,7 @@ const {toast} = useToast();
 
   return (
     <>
+      {reqStatus === 'pending' ? <div className="loader"></div>:
     <form
       onSubmit={parkinsonFormik.handleSubmit}
       className="flex-1 flex flex-col gap-4 items-center w-full px-12 sm:px-24"
@@ -245,6 +249,7 @@ const {toast} = useToast();
         Submit
       </Button>
     </form>
+}
 
 
     <ResultModal status={status} setStatus={setStatus} result={result}/>
