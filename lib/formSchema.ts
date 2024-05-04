@@ -3,12 +3,12 @@ import * as Yup from "yup";
 export const parkinsonFormSchema = Yup.object({
   MDVP_Fo_Hz: Yup.number()
     .required("Please enter value")
-    .min(80, "Average vocal fundamental frequency must be greater than 80")
-    .max(300, "Average vocal fundamental frequency must be less than 300"),
+    .min(80, "MDVP:Fo(Hz) must be greater than 80")
+    .max(300, "MDVP:Fo(Hz) must be less than 300"),
   MDVP_Flo_Hz: Yup.number()
     .required("Please enter value")
-    .min(65, "Minimum vocal fundamental frequency must be greater than 65")
-    .max(255, "Minimum vocal fundamental frequency must be less than 255"),
+    .min(65, "MDVP:Flo(Hz) must be greater than 65")
+    .max(255, "MDVP:Flo(Hz) must be less than 255"),
   MDVP_Shimmer: Yup.number()
     .required("Please enter value")
     .min(0.001, "MDVP:Shimmer must be greater than 0.001")
