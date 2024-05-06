@@ -36,5 +36,5 @@ export const parkinsonFormSchema = Yup.object({
   PPE: Yup.number()
     .required("Please enter value")
     .min(0.01, "PPE must be greater than 0.01")
-    .max(0.6, "PPE must be less than 50"),
+    .max(0.6, "PPE must be less than 0.6"),
 });
