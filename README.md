@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Early Parkinson's Disease Detection System
+
+A web application for early detection of Parkinson's disease using the Support Vector Machine (SVM) algorithm. The application analyzes various features extracted from voice recordings to predict the likelihood of Parkinson's disease.
+
+## Demo
+
+Check out the live demo of the application: [parkinson-detection-system.vercel.app](https://parkinson-detection-system.vercel.app)
+
+## Features
+
+- **Voice Analysis**: The system analyzes voice features such as pitch, frequency, and other vocal attributes that are often affected in Parkinson's disease.
+- **SVM Algorithm**: Uses a Support Vector Machine (SVM) model trained on a dataset to predict the likelihood of Parkinson's disease.
+- **User-Friendly Interface**: A simple and intuitive interface for uploading voice recordings and viewing prediction results.
+- **Real-Time Prediction**: Get instant results after uploading your voice recording.
+
+## Technologies Used
+
+- **Frontend**: Developed using React.js for a dynamic and responsive user interface.
+- **Backend**: Python with Flask (or Django) for handling the machine learning model and API requests.
+- **Machine Learning**: Scikit-learn for training and implementing the Support Vector Machine (SVM) model.
+- **Deployment**: Hosted on Vercel for a fast and scalable deployment.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js
+- Python
+- Git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository**:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    ```bash
+    git clone https://github.com/yourusername/parkinson-detection-system.git
+    cd parkinson-detection-system
+    ```
 
-## Learn More
+2. **Install frontend dependencies**:
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    cd client
+    npm install
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Install backend dependencies**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```bash
+    cd ../server
+    pip install -r requirements.txt
+    ```
 
-## Deploy on Vercel
+4. **Start the development server**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    - Frontend: Run the following in the `client` directory:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+      ```bash
+      npm start
+      ```
+
+    - Backend: Run the following in the `server` directory:
+
+      ```bash
+      python app.py
+      ```
+
+5. **Open the application**:
+
+    The application should be running at `http://localhost:3000` for the frontend and `http://localhost:5000` for the backend.
+
+## How It Works
+
+1. **Upload Voice Recording**: Users insert nine different voice recording features values using form.
+2. **Prediction**: The extracted features are fed into the SVM model to predict the likelihood of Parkinson's disease.
+3. **Results**: The prediction result is displayed to the user.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- The dataset used to train the model is sourced from [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Parkinsons).
+- Inspired by research on early detection methods for Parkinson's disease.
+
+---
+
+Developed by Rajin Sakha (https://github.com/rajinsakha)
+
