@@ -16,7 +16,7 @@ Check out the live demo of the application: [parkinson-detection-system.vercel.a
 ## Technologies Used
 
 - **Frontend**: Developed using React.js for a dynamic and responsive user interface.
-- **Backend**: Python with Flask (or Django) for handling the machine learning model and API requests.
+- **Backend**: Python with FAST API for handling the machine learning model and API requests.
 - **Machine Learning**: Scikit-learn for training and implementing the Support Vector Machine (SVM) model.
 - **Deployment**: Hosted on Vercel for a fast and scalable deployment.
 
